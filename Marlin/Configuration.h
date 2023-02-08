@@ -145,8 +145,8 @@
 //#define BLUETOOTH
 
 //Choose your mother board IC
-// #define STM32F401RC_creality
-#define STM32F103RET6_creality
+#define STM32F401RC_creality
+// #define STM32F103RET6_creality
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
@@ -166,7 +166,7 @@
 
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender-3 S1" 
+#define CUSTOM_MACHINE_NAME "Ender-3 S1"
 
 
 
@@ -193,7 +193,7 @@
   //#define SINGLENOZZLE_STANDBY_FAN
 #endif
 /*
-    Auto off display  
+    Auto off display
     rock_20210728
 */
 #define ENABLE_AUTO_OFF_DISPLAY
@@ -514,7 +514,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 295
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -522,7 +522,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      110
+#define BED_MAXTEMP      130
 #define CHAMBER_MAXTEMP  60
 
 /**
@@ -559,7 +559,7 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
- 
+
 /*
       #define DEFAULT_Kp 14.49
       #define DEFAULT_Ki 0.96
@@ -609,7 +609,7 @@
   //#define DEFAULT_bedKp 10.00
   //#define DEFAULT_bedKi .023
   //#define DEFAULT_bedKd 305.4
-  //M303 C12 E-1 S100   
+  //M303 C12 E-1 S100
   #define DEFAULT_bedKp 54.86
   #define DEFAULT_bedKi 10.06
   #define DEFAULT_bedKd 199.38
@@ -755,7 +755,7 @@
 
 // Enable pullup for all endstops to prevent a floating state
 //#define ENDSTOPPULLUPS   //rock_20210728
-#if DISABLED(ENDSTOPPULLUPS)   
+#if DISABLED(ENDSTOPPULLUPS)
   // Disable ENDSTOPPULLUPS to set pullups individually
   //#define ENDSTOPPULLUP_XMAX
   //#define ENDSTOPPULLUP_YMAX
@@ -903,7 +903,7 @@
 如果发现打印机抖动很厉害，可能是因为加速度过大的原因，可以将第二行中的前两个数值改为3000 3000.
 行的默认速度数值改为1000 1000 。
 */
-// 屏蔽LIMITED_MAX_ACCEL_EDITING 使用DEFAULT_MAX_ACCELERATION 解决最大加速度界面Z轴不能大于100的bug 107011 -20211012 
+// 屏蔽LIMITED_MAX_ACCEL_EDITING 使用DEFAULT_MAX_ACCELERATION 解决最大加速度界面Z轴不能大于100的bug 107011 -20211012
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2  rock_20211014
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 100, 10000 } // ...or, set your own edit limits
@@ -1037,7 +1037,7 @@
  *“手动探头”提供了一种无需探头即可进行“自动”床调平的方法。
  *重复使用 G29，用移动指令调整每个点的 Z 高度
  *或（使用 LCD_BED_LEVELING）LCD 控制器。
- */ 
+ */
 //#define PROBE_MANUALLY
 
 /**
@@ -1076,7 +1076,7 @@
  */
 /**
  *BLTouch 探头使用霍尔效应传感器并模拟伺服。
- */ 
+ */
 
 #if ENABLED(Z_AXIS_LIMIT_MODE)
   //#define BLTOUCH
@@ -1272,7 +1272,7 @@
   //#define PAUSE_PROBE_DEPLOY_WHEN_TRIGGERED // For Manual Deploy Allenkey Probe
 #endif
 
-/** 
+/**
  * Enable one or more of the following if probing seems unreliable.
  * Heaters and/or fans can be disabled during probing to minimize electrical
  * noise. A delay can also be added to allow noise and vibration to settle.
@@ -1369,7 +1369,7 @@
 #define X_MIN_POS -10
 #define Y_MIN_POS -8  //-10  rock_20210713
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE+10 
+#define X_MAX_POS X_BED_SIZE+10
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 270       //250
 
@@ -1420,7 +1420,7 @@
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-  #define FIL_RUNOUT_STATE     LOW  //HIGH //      // Pin state indicating that filament is NOT present. 
+  #define FIL_RUNOUT_STATE     LOW  //HIGH //      // Pin state indicating that filament is NOT present.
   //#define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
   #define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
@@ -1846,21 +1846,21 @@
 #define EEPROM_PLR
 #if ENABLED(EEPROM_PLR)
   #define PLR_ADDR 800
-#endif 
+#endif
 
 #define EEPROM_DEMARCATE  //温度标定功能
 #if ENABLED(EEPROM_DEMARCATE)
   #define DEMARCATE_ADDR 1900  //标定数据保存地址
   #define DEMARCATE_NUMBER 4   //标定数据保存长度
 //温度标定的标准测试点
-  #define Tem_standard_10   10 
+  #define Tem_standard_10   10
   #define Tem_standard_25   25
   #define Tem_standard_35   35
   #define Tem_standard_40   40
   #define Tem_standard_50   50
 
 //温度标定边界
-  #define Tem_compens_value_10   0 //10 
+  #define Tem_compens_value_10   0 //10
   #define Tem_compens_value_25   20//25
   #define Tem_compens_value_35   30//35
   #define Tem_compens_value_40   45//40
@@ -2042,7 +2042,7 @@
  *M75 -启动打印作业计时器
  *M76 -暂停打印作业计时器
  *M77 -停止打印作业计时器
- */ 
+ */
 #define PRINTJOB_TIMER_AUTOSTART
 
 /**
@@ -2068,7 +2068,7 @@
  *-总打印时间
  *
  *使用 M78 查看当前统计数据。
- */ 
+ */
 #define PRINTCOUNTER
 #if ENABLED(PRINTCOUNTER)
   #define PRINTCOUNTER_SAVE_INTERVAL 60 // (minutes) EEPROM save interval during print
@@ -2638,7 +2638,7 @@
 //#define ANYCUBIC_LCD_CHIRON
 #if EITHER(ANYCUBIC_LCD_I3MEGA, ANYCUBIC_LCD_CHIRON)
   #define LCD_SERIAL_PORT 3  // Default is 3 for Anycubic
- 
+
   //#define ANYCUBIC_LCD_DEBUG
 #endif
 
@@ -2971,6 +2971,6 @@
 //#define EDITABLE_SERVO_ANGLES
 
 
-// #define CREALITY_POWER_TO_CONTINUE  
+// #define CREALITY_POWER_TO_CONTINUE
 //超级电容断电续打功能,如果取消此宏，默认是将断电续打数据保存到SD的PLR文件中，逐层覆盖
 //  #define CREALITY_ENDER3_2021   //Power to continue playing
